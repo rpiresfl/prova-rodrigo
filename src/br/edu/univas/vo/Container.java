@@ -13,14 +13,24 @@ public class Container implements Ingredient {
 	
 	@Override
 	public String description() {
-		ingredients.forEach(Ingredient::price);
-		return null;
+		String pizzaDescription = "";
+		
+		for (Ingredient ingredient : ingredients) {
+			pizzaDescription += ingredient.description() + ' ';
+		}
+		
+		return pizzaDescription;
 	}
 	
 	@Override
 	public double price() {
-		ingredients.forEach(Ingredient::price);
-		return 0;
+		double totalPrice = 0;
+		
+		for (Ingredient ingredient : ingredients) {
+			totalPrice += ingredient.price();
+		}
+		
+		return totalPrice;
 	}
 	
 	public void addComponent(Ingredient ingredient) {
